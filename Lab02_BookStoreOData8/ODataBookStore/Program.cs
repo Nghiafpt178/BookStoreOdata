@@ -2,6 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.OData;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
+using ODataBookStore.DTOs;
 using ODataBookStore.Models;
 using ODataBookStore.Services;
 using System.Diagnostics;
@@ -39,7 +40,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseODataBatching();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

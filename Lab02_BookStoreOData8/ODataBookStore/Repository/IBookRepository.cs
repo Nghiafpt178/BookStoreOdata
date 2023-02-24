@@ -6,7 +6,12 @@ namespace ODataBookStore.Services
     public interface IBookRepository
     {
         List<Book> GetAllBooks();
+        BookRespond AddBook(BookRespond bookRespond);    
+        List<BookRespond> DeleteBook(string key);
 
-        void AddBook(BookRespond bookRespond);    
+        BookRespond GetBookByID(string key);
+
+        BookRespond UpdateBook(string key, BookRespond bookRespond);
+
     }
 }
