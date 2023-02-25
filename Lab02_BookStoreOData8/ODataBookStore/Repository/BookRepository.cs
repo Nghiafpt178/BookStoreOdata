@@ -27,8 +27,7 @@ namespace ODataBookStore.Services
 
         public List<BookRespond> DeleteBook(string key)
         {
-            string res = key.Replace(" ", "");
-            var book = _context.Books.FirstOrDefault(b => b.BookId == res);
+            var book = _context.Books.FirstOrDefault(b => b.BookId == key.Trim());
             if(book != null)
             {
                 _context.Remove(book);
@@ -48,8 +47,7 @@ namespace ODataBookStore.Services
 
         public BookRespond GetBookByID(string key)
         {
-            string res = key.Replace(" ", "");
-            var book = _context.Books.FirstOrDefault(b => b.BookId == res);
+            var book = _context.Books.FirstOrDefault(b => b.BookId == key.Trim());
             if(book != null)
             {
                 BookRespond bookRespond = mapper.Map<BookRespond>(book);
@@ -60,8 +58,7 @@ namespace ODataBookStore.Services
 
         public BookRespond UpdateBook(string key, BookRespond bookRespond)
         {
-            string res = key.Replace(" ", "");
-            var book = _context.Books.FirstOrDefault(b => b.BookId == res);
+            var book = _context.Books.FirstOrDefault(b => b.BookId == key.Trim());
             if(book != null)
             {
                 book.Title = bookRespond.Title; 

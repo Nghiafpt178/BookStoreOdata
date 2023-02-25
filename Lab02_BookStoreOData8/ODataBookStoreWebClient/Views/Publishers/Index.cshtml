@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ODataBookStore.Models.Publisher>
+@{
+}
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h2>Publishers Management</h2>
+    <p>
+        <a href="/Publishers/Create">Create New</a>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <td>PubId</td>
+                <td>PublisherName</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Country</td>
+                <td>Action</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.PubId</th>
+                    <th>@item.PublisherName</th>
+                    <th>@item.City</th>
+                    <th>@item.State</th>
+                    <th>@item.Country</th>
+                    <td>
+                        <a asp-controller="Publishers" asp-action="Edit" asp-route-key="@item.PubId">Edit</a>
+                    </td>
+                    <td>
+                        <a href="#" type="button" onclick="ConfirmDelete(@item.PubId)">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function ConfirmDelete(key) {
+            var res = confirm("Are you sure delete this item");
+            if (res == true) {
+                window.location.assign("/Publishers/Delete?key=" + key);
+            } else {
+                return false;
+            }
+
+        }
+    </script>
+</body>

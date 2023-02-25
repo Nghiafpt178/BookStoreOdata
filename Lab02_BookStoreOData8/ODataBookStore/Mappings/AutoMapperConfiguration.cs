@@ -12,6 +12,7 @@ namespace ODataBookStore.Mappings
             CreateMap<Book, BookRespond>().ReverseMap();
             CreateMap<Author, AuthorRespond>().ReverseMap();
             CreateMap<Publisher, PublisherRespond>().ReverseMap();
+            CreateMap<User, UserRespond>().ReverseMap();
 
         }
     }

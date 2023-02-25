@@ -29,6 +29,7 @@ static IEdmModel GetEdmModel()
     builder.EntitySet<Book>("Books");
     builder.EntitySet<Author>("Authors");
     builder.EntitySet<Publisher>("Publishers");
+    builder.EntitySet<User>("Users");
     return builder.GetEdmModel();
 }
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -40,6 +41,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IPublishersRepository, PulishersRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 

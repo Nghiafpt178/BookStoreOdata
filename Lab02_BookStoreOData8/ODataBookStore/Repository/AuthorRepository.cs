@@ -26,8 +26,8 @@ namespace ODataBookStore.Repository
 
 		public List<AuthorRespond> DeleteAuthor(string key)
 		{
-            string res = key.Replace(" ", "");
-            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == res);
+            
+            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == key.Trim());
             if (author != null)
             {
                 _context.Remove(author);
@@ -46,8 +46,8 @@ namespace ODataBookStore.Repository
 
 		public AuthorRespond GetAuthorByID(string key)
 		{
-            string res = key.Replace(" ", "");
-            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == res);
+            
+            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == key.Trim());
             if (author != null)
             {
                 AuthorRespond authorRespond = mapper.Map<AuthorRespond>(author);
@@ -58,8 +58,8 @@ namespace ODataBookStore.Repository
 
 		public AuthorRespond UpdateAuthor(string key, AuthorRespond authorRespond)
 		{
-            string res = key.Replace(" ", "");
-            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == res);
+           
+            var author = _context.Authors.FirstOrDefault(b => b.AuthorId == key.Trim());
             if (author != null)
             {
                 author.LastName = authorRespond.LastName;   

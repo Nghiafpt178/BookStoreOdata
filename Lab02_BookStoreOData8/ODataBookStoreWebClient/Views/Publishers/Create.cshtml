@@ -1,0 +1,38 @@
+﻿@model ODataBookStore.Models.Publisher
+@{
+}
+<h3>Create New Publisher</h3>
+<h5><a asp-action="Index" asp-controller="Publishers">Back to list</a></h5>
+<form id="myForm" asp-controller="Publishers" asp-action="CreatePublisher" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.PubId" class="control-label"></label>
+        <input asp-for="@Model.PubId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.PublisherName" class="control-label"></label>
+        <input asp-for="@Model.PublisherName" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.City" class="control-label"></label>
+        <input asp-for="@Model.City" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.State" class="control-label"></label>
+        <input asp-for="@Model.State" class="form-control" />
+
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Country" class="control-label"></label>
+        <input asp-for="@Model.Country" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="button" value="Clear" onclick="myFunction()" class="btn btn-primary" />
+    </div>
+</form>
+<script>
+    function myFunction(){
+        document.getElementById('myForm').reset();
+    }
+</script>

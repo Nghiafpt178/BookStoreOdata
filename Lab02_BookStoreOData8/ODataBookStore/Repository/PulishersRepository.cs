@@ -26,8 +26,8 @@ namespace ODataBookStore.Repository
 
         public List<PublisherRespond> DeletePubliser(string key)
         {
-            string res = key.Replace(" ", "");
-            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == res);
+            
+            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == key.Trim());
             if (publisher != null)
             {
                 _context.Remove(publisher);
@@ -47,8 +47,8 @@ namespace ODataBookStore.Repository
 
         public PublisherRespond GetPublisherByID(string key)
         {
-            string res = key.Replace(" ", "");
-            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == res);
+            
+            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == key.Trim());
             if (publisher != null)
             {
                 PublisherRespond publisherRespond = mapper.Map<PublisherRespond>(publisher);
@@ -59,8 +59,8 @@ namespace ODataBookStore.Repository
 
         public PublisherRespond UpdatePublisher(string key, PublisherRespond publisherRespond)
         {
-            string res = key.Replace(" ", "");
-            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == res);
+            
+            var publisher = _context.Publishers.FirstOrDefault(b => b.PubId == key.Trim());
             if (publisher != null)
             {
                 publisher.PublisherName = publisherRespond.PublisherName;
