@@ -38,6 +38,7 @@ namespace ODataBookStore.Controllers
         }
 
         [EnableQuery]
+        [HttpDelete]
         public IActionResult Delete([FromODataUri] string key)
         {
             List<BookRespond> deletedBook = bookRepository.DeleteBook(key);

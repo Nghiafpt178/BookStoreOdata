@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ODataBookStore.Models.Author>
+@{
+}
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <h2>Author Management</h2>
+    <p>
+        <a href="/Authors/Create">Create New</a>
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <td>Author ID</td>
+                <td>LastName</td>
+                <td>FirstName</td>
+                <td>Phone</td>
+                <td>Address</td>
+                <td>City</td>
+                <td>State</td>
+                <td>Zip</td>
+                <td>EmailAddress</td>
+                <td>Action</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@item.AuthorId</th>
+                    <th>@item.LastName</th>
+                    <th>@item.FirstName</th>
+                    <th>@item.Phone</th>
+                    <th>@item.Address</th>
+                    <th>@item.City</th>
+                    <th>@item.State</th>
+                    <th>@item.Zip</th>
+                    <th>@item.EmailAddress</th>
+                    <td>
+                        <a asp-controller="Authors" asp-action="Edit" asp-route-key="@item.AuthorId">Edit</a>
+                    </td>
+                    <td>
+                        <a href="#" type="button" onclick="ConfirmDelete(@item.AuthorId)">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        function ConfirmDelete(key) {
+            var res = confirm("Are you sure delete this item");
+            if (res == true) {
+                window.location.assign("/Authors/Delete?key=" + key);
+            } else {
+                return false;
+            }
+
+        }
+    </script>
+</body>

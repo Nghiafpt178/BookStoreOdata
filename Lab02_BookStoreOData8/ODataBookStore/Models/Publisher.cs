@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ODataBookStore.Models;
 
 public partial class Publisher
 {
+    [Key]
     public string PubId { get; set; } = null!;
 
     public string PublisherName { get; set; } = null!;

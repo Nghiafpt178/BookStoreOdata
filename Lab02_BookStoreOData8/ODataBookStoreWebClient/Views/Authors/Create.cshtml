@@ -1,0 +1,49 @@
+﻿@model ODataBookStore.Models.Author
+@{
+}
+<h3>Create New Author</h3>
+<h5><a asp-action="Index" asp-controller="Authors">Back to list</a></h5>
+<form asp-controller="Authors" asp-action="CreateAuthor" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.AuthorId" class="control-label"></label>
+        <input asp-for="@Model.AuthorId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.LastName" class="control-label"></label>
+        <input asp-for="@Model.LastName" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.FirstName" class="control-label"></label>
+        <input asp-for="@Model.FirstName" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Phone" class="control-label"></label>
+        <input asp-for="@Model.Phone" class="form-control" />
+
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Address" class="control-label"></label>
+        <input asp-for="@Model.Address" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.City" class="control-label"></label>
+        <input asp-for="@Model.City" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.State" class="control-label"></label>
+        <input asp-for="@Model.State" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Zip" class="control-label"></label>
+        <input asp-for="@Model.Zip" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.EmailAddress" class="control-label"></label>
+        <input asp-for="@Model.EmailAddress" class="form-control" />
+    </div>
+  
+    <div style="margin-bottom: 40px;" class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

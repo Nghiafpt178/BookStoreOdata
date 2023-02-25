@@ -21,24 +21,60 @@
     </style>
 </head>
 <body>
-
-    <h2>HTML Table</h2>
-
+    <h2>Book Management</h2>
+    <p>
+        <a href="/Books/Create">Create New</a>
+    </p>
     <table>
         <thead>
             <tr>
-                <td>ID</td>
+                <td>Book ID</td>
+                <td>Title</td>
+                <td>Type</td>
+                <td>PubId</td>
+                <td>Price</td>
+                <td>Advance</td>
+                <td>Royalty</td>
+                <td>YtdSales</td>
+                <td>Notes</td>
+                <td>PublishedDate</td>
+                <td>Action</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
-            @foreach(var item in Model){
+            @foreach (var item in Model)
+            {
                 <tr>
                     <th>@item.BookId</th>
+                    <th>@item.Title</th>
+                    <th>@item.Type</th>
+                    <th>@item.PubId</th>
+                    <th>@item.Price</th>
+                    <th>@item.Advance</th>
+                    <th>@item.Royalty</th>
+                    <th>@item.YtdSales</th>
+                    <th>@item.Notes</th>
+                    <th>@item.PublishedDate</th>
+                    <td>
+                        <a asp-controller="Books" asp-action="Edit" asp-route-key="@item.BookId">Edit</a>
+                    </td>
+                    <td>
+                        <a href="#" type="button" onclick="ConfirmDelete(@item.BookId)">Delete</a>
+                    </td>
                 </tr>
             }
-            
         </tbody>
-        
-      
     </table>
+    <script>
+        function ConfirmDelete(key) {
+            var res = confirm("Are you sure delete this item");
+            if (res == true) {
+                window.location.assign("/Books/Delete?key=" + key);
+            } else {
+                return false;
+            }
+
+        }
+    </script>
 </body>

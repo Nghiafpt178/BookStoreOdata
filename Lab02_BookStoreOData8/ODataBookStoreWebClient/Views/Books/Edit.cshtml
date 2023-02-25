@@ -1,0 +1,53 @@
+﻿@model ODataBookStore.Models.Book
+@{
+}
+<h3>Edit Book</h3>
+<h5><a asp-action="Index" asp-controller="Books">Back to list</a></h5>
+<form asp-controller="Books" asp-action="EditBook" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.BookId" class="control-label"></label>
+        <input asp-for="@Model.BookId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Title" class="control-label"></label>
+        <input asp-for="@Model.Title" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Type" class="control-label"></label>
+        <input asp-for="@Model.Type" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.PubId" class="control-label"></label>
+        <input asp-for="@Model.PubId" class="form-control" />
+
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Price" class="control-label"></label>
+        <input asp-for="@Model.Price" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Advance" class="control-label"></label>
+        <input asp-for="@Model.Advance" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Royalty" class="control-label"></label>
+        <input asp-for="@Model.Royalty" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.YtdSales" class="control-label"></label>
+        <input asp-for="@Model.YtdSales" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Notes" class="control-label"></label>
+        <input asp-for="@Model.Notes" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.PublishedDate" class="control-label"></label>
+        <input asp-for="@Model.PublishedDate" class="form-control" />
+    </div>
+
+    <div style="margin-bottom: 40px;" class="form-group">
+        <input type="submit" value="Edit" class="btn btn-primary" />
+    </div>
+</form>

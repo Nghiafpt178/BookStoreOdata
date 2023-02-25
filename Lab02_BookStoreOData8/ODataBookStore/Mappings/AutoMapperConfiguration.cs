@@ -10,6 +10,8 @@ namespace ODataBookStore.Mappings
         public AutoMapperConfiguration()
         {
             CreateMap<Book, BookRespond>().ReverseMap();
+            CreateMap<Author, AuthorRespond>().ReverseMap();
+            CreateMap<Publisher, PublisherRespond>().ReverseMap();
 
         }
     }
