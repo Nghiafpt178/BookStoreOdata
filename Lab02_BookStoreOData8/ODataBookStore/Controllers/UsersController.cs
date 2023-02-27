@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Formatter;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,20 @@ namespace ODataBookStore.Controllers
 		{
 			this.userRepository = userRepository;
 		}
+        [HttpGet]
+        [EnableQuery]
+        public IActionResult Get()
+        {
+            List<User> users = userRepository.GetAll();
+            return Ok(users);
+        }
+
+        [EnableQuery]
+        public IActionResult Get(string key)
+        {
+            UserRespond userRespond = userRepository.GetUserByID(key);
+            return Ok(userRespond);
+        }
 
         [EnableQuery]
         public IActionResult Post(string email, string pass)
@@ -31,6 +46,23 @@ namespace ODataBookStore.Controllers
                 IsSuccess = true,
                 Message = "User exist in db!",
                 Data = userCheck
+            });
+        }
+
+        [EnableQuery]
+        [HttpPut]
+        public IActionResult Put([FromODataUri] string key, [FromBody] UserRespond userRespond)
+        {
+            UserRespond userRespond1 = userRepository.UpdateUser(key, userRespond);
+            if (userRespond1 == null)
+            {
+                return NotFound();
+            }
+            return Ok(new Respond<UserRespond>()
+            {
+                IsSuccess = true,
+                Message = "Update user success!",
+                Data = userRespond1
             });
         }
     }

@@ -7,7 +7,7 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div style="margin-bottom: 40px;" class="form-group">
         <label asp-for="@Model.BookId" class="control-label"></label>
-        <input asp-for="@Model.BookId" class="form-control" />
+        <input readonly asp-for="@Model.BookId" class="form-control" />
     </div>
     <div style="margin-bottom: 40px;" class="form-group">
         <label asp-for="@Model.Title" class="control-label"></label>
@@ -18,9 +18,13 @@
         <input asp-for="@Model.Type" class="form-control" />
     </div>
     <div style="margin-bottom: 40px;" class="form-group">
-        <label asp-for="@Model.PubId" class="control-label"></label>
-        <input asp-for="@Model.PubId" class="form-control" />
-
+        <label  class="control-label">Publisher name</label>
+        <select asp-for="@Model.PubId" class="form-control">
+            @foreach (var item in ViewBag.Publishers)
+            {
+                <option selected="@(item.PubId == Model.PubId)" value="@item.PubId">@item.PublisherName</option>
+            }
+        </select>
     </div>
     <div style="margin-bottom: 40px;" class="form-group">
         <label asp-for="@Model.Price" class="control-label"></label>

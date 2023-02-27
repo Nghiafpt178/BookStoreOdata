@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ODataBookStore.Models.Author>
 @{
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
     <style>
         table {
@@ -22,6 +23,10 @@
 </head>
 <body>
     <h2>Author Management</h2>
+    <form method="get" asp-action="Index">
+        <input value="@ViewData["key"]" type="text" placeholder="Search ..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
     <p>
         <a href="/Authors/Create">Create New</a>
     </p>

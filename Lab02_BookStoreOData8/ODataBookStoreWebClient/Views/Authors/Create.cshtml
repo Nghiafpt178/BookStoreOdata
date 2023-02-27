@@ -3,7 +3,7 @@
 }
 <h3>Create New Author</h3>
 <h5><a asp-action="Index" asp-controller="Authors">Back to list</a></h5>
-<form asp-controller="Authors" asp-action="CreateAuthor" method="post">
+<form id="myForm1" asp-controller="Authors" asp-action="CreateAuthor" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div style="margin-bottom: 40px;" class="form-group">
         <label asp-for="@Model.AuthorId" class="control-label"></label>
@@ -45,5 +45,11 @@
   
     <div style="margin-bottom: 40px;" class="form-group">
         <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="button" value="Clear" onclick="myFunction()" class="btn btn-primary" />
     </div>
 </form>
+<script>
+    function myFunction() {
+        document.getElementById('myForm1').reset();
+    }
+</script>

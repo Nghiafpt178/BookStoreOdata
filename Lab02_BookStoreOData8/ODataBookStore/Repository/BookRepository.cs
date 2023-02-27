@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using ODataBookStore.DTOs;
 using ODataBookStore.Models;
 
@@ -41,7 +42,7 @@ namespace ODataBookStore.Services
 
         public List<Book> GetAllBooks()
         {
-            var books = _context.Books.ToList();
+            var books = _context.Books.Include(b => b.Pub).ToList();
             return books;
         }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Newtonsoft.Json.Linq;
 using ODataBookStore.Models;
 using System.Net.Http.Headers;
@@ -19,8 +20,14 @@ namespace ODataBookStoreWebClient.Controllers
             client.DefaultRequestHeaders.Accept.Add(contentType);
             PublisherApiUrl = "https://localhost:44355/odata/Publishers";
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search)
         {
+            if (search != null)
+            {
+                PublisherApiUrl = PublisherApiUrl + "?$filter=contains(PublisherName, '" + search + "') " +
+                    "or contains(City, '" + search + "') or contains(State, '" + search + "') " +
+                    "or contains(Country, '" + search + "')";
+            }
             HttpResponseMessage response = await client.GetAsync(PublisherApiUrl);
             string strData = await response.Content.ReadAsStringAsync();
             dynamic temp = JObject.Parse(strData);
@@ -33,8 +40,10 @@ namespace ODataBookStoreWebClient.Controllers
                 State = x["State"].ToString(),              
                 Country = x["Country"].ToString(),
             }).ToList();
+            @ViewData["key"] = search;
             return View(items);
         }
+      
         public IActionResult Create(Publisher publisher)
         {
             return View(publisher);

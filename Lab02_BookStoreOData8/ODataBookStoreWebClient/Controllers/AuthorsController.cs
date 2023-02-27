@@ -20,8 +20,14 @@ namespace ODataBookStoreWebClient.Controllers
             AuthorApiUrl = "https://localhost:44355/odata/Authors";
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? search)
         {
+            if (search != null)
+            {
+                AuthorApiUrl = AuthorApiUrl + "?$filter=contains(LastName, '" + search + "') " +
+                    "or contains(FirstName, '" + search + "') or contains(EmailAddress, '" + search + "') " +
+                    "or contains(City, '" + search + "')";
+            }
             HttpResponseMessage response = await client.GetAsync(AuthorApiUrl);
             string strData = await response.Content.ReadAsStringAsync();
             dynamic temp = JObject.Parse(strData);
@@ -38,6 +44,7 @@ namespace ODataBookStoreWebClient.Controllers
                 Zip = x["Zip"].ToString(),
                 EmailAddress = x["EmailAddress"].ToString(),
             }).ToList();
+            @ViewData["key"] = search;
             return View(items);
         }
 

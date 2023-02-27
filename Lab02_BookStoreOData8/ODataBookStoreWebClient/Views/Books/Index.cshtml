@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ODataBookStore.Models.Book>
 @{
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <head>
     <style>
         table {
@@ -22,6 +23,10 @@
 </head>
 <body>
     <h2>Book Management</h2>
+    <form method="get" asp-action="Index">
+        <input value="@ViewData["key"]" type="text" placeholder="Search ..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
     <p>
         <a href="/Books/Create">Create New</a>
     </p>
@@ -29,7 +34,7 @@
         <thead>
             <tr>
                 <td>Book ID</td>
-                <td>Title</td>
+                <td>Title </td>
                 <td>Type</td>
                 <td>PubId</td>
                 <td>Price</td>

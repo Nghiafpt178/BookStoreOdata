@@ -1,0 +1,61 @@
+﻿@model ODataBookStore.Models.User
+@{
+}
+<h3>My Profile</h3>
+<form asp-controller="Users" asp-action="EditUser" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.PubId" class="control-label"></label>
+        <input readonly asp-for="@Model.PubId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.UserId" class="control-label"></label>
+        <input readonly asp-for="@Model.UserId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.EmailAddress" class="control-label"></label>
+        <input asp-for="@Model.EmailAddress" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Password" class="control-label"></label>
+        <input asp-for="@Model.Password" class="form-control" />
+
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.Source" class="control-label"></label>
+        <input asp-for="@Model.Source" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.FirstName" class="control-label"></label>
+        <input asp-for="@Model.FirstName" class="form-control" />
+    </div>
+     <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.MiddleName" class="control-label"></label>
+        <input asp-for="@Model.MiddleName" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.LastName" class="control-label"></label>
+        <input asp-for="@Model.LastName" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.RoleId" class="control-label"></label>
+        <input readonly asp-for="@Model.RoleId" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label  class="control-label">Publisher name</label>
+        <select asp-for="@Model.PubId" class="form-control">
+            @foreach (var item in ViewBag.Publishers1)
+            {
+                    <option selected="@(item.PubId == Model.PubId)" value="@item.PubId">@item.PublisherName</option>
+            }
+        </select>
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <label asp-for="@Model.HireDate" class="control-label"></label>
+        <input asp-for="@Model.HireDate" class="form-control" />
+    </div>
+    <div style="margin-bottom: 40px;" class="form-group">
+        <input type="submit" value="Update" class="btn btn-primary" />
+
+    </div>
+</form>
